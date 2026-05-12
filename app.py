@@ -231,12 +231,7 @@ with st.sidebar:
     st.markdown("**FAQ Acadêmico Inteligente**")
     st.markdown("---")
 
-    hf_token = st.text_input(
-        "🔑 Token HuggingFace",
-        type="password",
-        placeholder="hf_...",
-        help="Obtenha grátis em huggingface.co/settings/tokens"
-    )
+    hf_token = st.secrets.get("HF_TOKEN", "")
 
     st.markdown("---")
     st.markdown("### ⚙️ Configurações")
