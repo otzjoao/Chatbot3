@@ -247,6 +247,7 @@ with st.sidebar:
     Parâmetros: **8 bilhões**  
     Idioma: 🇧🇷 Português  
     API: HuggingFace (gratuita)
+    "informações de parâmetros foram atualizadas até **dezembro de 2023**"
     """)
 
     st.markdown("---")
@@ -256,7 +257,7 @@ with st.sidebar:
 
 
 # ── System prompt temático ───────────────────────────────────────────────────
-SYSTEM_PROMPT = """Você é o UniBot, assistente virtual acadêmico de uma universidade brasileira.
+SYSTEM_PROMPT = """Você é o UniBot, assistente virtual acadêmico de uma universidade brasileira chamada Unigran Capital.
 Responda SEMPRE em português do Brasil, de forma clara, organizada e amigável.
 Você ajuda com dúvidas sobre:
 - Matrícula, trancamento e rematrícula
@@ -267,6 +268,7 @@ Você ajuda com dúvidas sobre:
 - Biblioteca e acesso a materiais
 - Aproveitamento de estudos e transferências
 - Vida universitária em geral
+- Endereços e contatos úteis dentro da instituição
 
 Seja sempre prestativo. Se não souber algo específico da instituição, oriente o aluno onde buscar a informação correta."""
 

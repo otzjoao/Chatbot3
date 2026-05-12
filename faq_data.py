@@ -29,7 +29,7 @@ FAQ: list[dict] = [
         "resposta": (
             "📝 **Matrícula — Informações Gerais**\n\n"
             "- **Período:** A matrícula ocorre todo semestre, geralmente em **janeiro** (1º sem) e **julho** (2º sem).\n"
-            "- **Como fazer:** Acesse o **Portal do Aluno** → *Acadêmico* → *Matrícula em Disciplinas*.\n"
+            "- **Como fazer:** Acesse a **Área Acadêmica** → *Acadêmico* → *Matrícula em Disciplinas*.\n"
             "- **Documentos necessários:** Nenhum documento adicional; basta estar com situação financeira regular.\n"
             "- **Dúvidas específicas:** Procure a **Secretaria Acadêmica**, sala B-12, de segunda a sexta, das 8h às 18h.\n\n"
             "> ⚠️ Alunos com pendências financeiras precisam regularizar antes de realizar a matrícula."
@@ -40,7 +40,8 @@ FAQ: list[dict] = [
     {
         "palavras_chave": [
             "trancamento", "trancar", "trancamento de curso",
-            "trancar matrícula", "pausar curso"
+            "trancar matrícula", "pausar curso", "suspender matrícula",
+            "trancamento semestral", "trancamento anual"
         ],
         "resposta": (
             "🔒 **Trancamento de Curso**\n\n"
@@ -57,19 +58,20 @@ FAQ: list[dict] = [
     {
         "palavras_chave": [
             "calendário", "calendario", "datas", "feriado acadêmico",
-            "início das aulas", "fim das aulas", "recesso", "semestre"
+            "início das aulas", "fim das aulas", "recesso", "semestre",
+            "datas importantes", "provas", "avaliações"
         ],
         "resposta": (
-            "📅 **Calendário Acadêmico 2025**\n\n"
+            "📅 **Calendário Acadêmico 2026**\n\n"
             "| Evento | Data |\n"
             "|--------|------|\n"
-            "| Início do 1º semestre | 03/02/2025 |\n"
-            "| Recesso de Carnaval | 03/03 a 05/03/2025 |\n"
-            "| Provas Parciais (P1) | 07/04 a 11/04/2025 |\n"
-            "| Provas Finais (PF) | 23/06 a 27/06/2025 |\n"
-            "| Início do 2º semestre | 04/08/2025 |\n"
-            "| Provas Parciais (P2) | 06/10 a 10/10/2025 |\n"
-            "| Provas Finais (PF) | 24/11 a 28/11/2025 |\n\n"
+            "| Início do 1º semestre | 03/02/2026 |\n"
+            "| Recesso de Carnaval | 03/03 a 05/03/2026 |\n"
+            "| Provas Parciais (P1) | 07/04 a 11/04/2026 |\n"
+            "| Provas Finais (PF) | 23/06 a 27/06/2026 |\n\n"
+            "| Início do 2º semestre | 04/08/2026 |\n"
+            "| Provas Parciais (P2) | 06/10 a 10/10/2026 |\n"
+            "| Provas Finais (PF) | 24/11 a 28/11/2026 |\n\n"
             "> 📌 Calendário completo disponível no Portal do Aluno → *Acadêmico* → *Calendário*."
         ),
     },
@@ -205,7 +207,7 @@ FAQ: list[dict] = [
             "| Central de Estágios | estagios@univ.edu.br | Seg–Sex 9h–17h |\n"
             "| TI / Portal do Aluno | suporte.ti@univ.edu.br | Seg–Sex 8h–20h |\n"
             "| Ouvidoria | ouvidoria@univ.edu.br | 24h (online) |\n\n"
-            "📍 **Endereço:** Av. Universitária, 1000 — Bloco A, térreo."
+            "📍 **Endereço:** R. Abrão Júlio Rahe, 325 - Centro, Campo Grande - MS, 79010-010."
         ),
     },
 ]
