@@ -243,8 +243,8 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("### 📚 Sobre")
     st.markdown("""
-    Modelo: **Qwen2.5-1.5B-Instruct**  
-    Parâmetros: **1.5 bilhões**  
+    Modelo: **meta-llama/Llama-3.1-8B-Instruct**  
+    Parâmetros: **8 bilhões**  
     Idioma: 🇧🇷 Português  
     API: HuggingFace (gratuita)
     """)
