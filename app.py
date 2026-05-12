@@ -279,7 +279,7 @@ if "messages" not in st.session_state:
 # ── Função de chamada à API ──────────────────────────────────────────────────
 def chat_with_qwen(messages: list, token: str, temperature: float, max_tokens: int) -> str:
     client = InferenceClient(
-        model="Qwen/Qwen2.5-1.5B-Instruct",
+        model="meta-llama/Llama-3.1-8B-Instruct",
         token=token,
     )
 
