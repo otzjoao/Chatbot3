@@ -9,72 +9,175 @@ html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
         radial-gradient(ellipse at 80% 100%, #e8d5f0 0%, transparent 50%);
 }
 
-[data-testid="stSidebar"] { background: #1a1a2e !important; border-right: 2px solid #e8d5a3; }
+[data-testid="stSidebar"] { 
+    background: #1a1a2e !important; 
+    border-right: 2px solid #e8d5a3; 
+}
+
 [data-testid="stSidebar"] * { color: #f0e6d3 !important; }
+
 [data-testid="stSidebar"] .stMarkdown h1,
 [data-testid="stSidebar"] .stMarkdown h2,
-[data-testid="stSidebar"] .stMarkdown h3 { color: #e8d5a3 !important; font-family: 'DM Serif Display', serif !important; }
+[data-testid="stSidebar"] .stMarkdown h3 { 
+    color: #e8d5a3 !important; 
+    font-family: 'DM Serif Display', serif !important; 
+}
+
 [data-testid="stSidebar"] hr { border-color: #333355 !important; }
 
-.main-header { text-align: center; padding: 2rem 0 1rem 0; border-bottom: 2px solid #1a1a2e; margin-bottom: 1.5rem; }
-.main-header h1 { font-family: 'DM Serif Display', serif; font-size: 2.8rem; color: #1a1a2e; margin: 0; letter-spacing: -1px; }
-.main-header p { color: #5a5a7a; font-size: 0.95rem; font-weight: 300; margin: 0.3rem 0 0 0; }
+.main-header { 
+    text-align: center; 
+    padding: 2rem 0 1rem 0; 
+    border-bottom: 2px solid #1a1a2e; 
+    margin-bottom: 1.5rem; 
+}
 
-.chat-wrapper { display: flex; flex-direction: column; gap: 1rem; padding: 0.5rem 0; }
+.main-header h1 { 
+    font-family: 'DM Serif Display', serif; 
+    font-size: 2.8rem; color: #1a1a2e; 
+    margin: 0; 
+    letter-spacing: -1px; 
+}
 
-.msg-user { display: flex; justify-content: flex-end; }
+.main-header p { color: #5a5a7a; 
+    font-size: 0.95rem; 
+    font-weight: 300; 
+    margin: 0.3rem 0 0 0; 
+}
+
+.chat-wrapper { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 1rem; 
+    padding: 0.5rem 0; 
+}
+
+.msg-user { 
+    display: flex; 
+    justify-content: flex-end; 
+}
+
 .msg-user .bubble {
-    background: #1a1a2e; color: #f5f0e8;
+    background: #1a1a2e; 
+    color: #f5f0e8;
     border-radius: 18px 18px 4px 18px;
-    padding: 0.75rem 1.1rem; max-width: 75%;
-    font-size: 0.92rem; line-height: 1.5;
+    padding: 0.75rem 1.1rem; 
+    max-width: 75%;
+    font-size: 0.92rem; 
+    line-height: 1.5;
     box-shadow: 0 2px 8px rgba(26,26,46,0.15);
 }
 
-.msg-bot { display: flex; justify-content: flex-start; align-items: flex-start; gap: 0.6rem; }
-.msg-bot .avatar {
-    background: #e8d5a3; color: #1a1a2e; border-radius: 50%;
-    width: 36px; height: 36px; display: flex; align-items: center;
-    justify-content: center; font-size: 1.1rem; flex-shrink: 0;
-    margin-top: 2px; border: 2px solid #1a1a2e;
+.msg-bot { 
+    display: flex; 
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    gap: 0.6rem; 
 }
+
+.msg-bot .avatar {
+    background: #e8d5a3; 
+    color: #1a1a2e; 
+    border-radius: 50%;
+    width: 36px; 
+    height: 36px; 
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+    font-size: 1.1rem; 
+    flex-shrink: 0;
+    margin-top: 2px; 
+    border: 2px solid #1a1a2e;
+}
+
 .msg-bot .bubble {
-    background: #ffffff; color: #1a1a2e;
+    background: #ffffff; 
+    color: #1a1a2e;
     border-radius: 4px 18px 18px 18px;
-    padding: 0.75rem 1.1rem; max-width: 75%;
-    font-size: 0.92rem; line-height: 1.6;
+    padding: 0.75rem 1.1rem; 
+    max-width: 75%;
+    font-size: 0.92rem; 
+    line-height: 1.6;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     border: 1px solid #e0ddd5;
 }
 
-.typing-indicator { display: flex; gap: 4px; align-items: center; padding: 0.4rem 0; }
-.typing-indicator span { width: 8px; height: 8px; background: #5a5a7a; border-radius: 50%; animation: bounce 1.2s infinite; }
+.typing-indicator { 
+    display: flex; 
+    gap: 4px; 
+    align-items: center; 
+    padding: 0.4rem 0; 
+}
+
+.typing-indicator span { 
+    width: 8px; 
+    height: 8px; 
+    background: #5a5a7a; 
+    border-radius: 50%; 
+    animation: bounce 1.2s infinite; 
+}
+
 .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+
 .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
 @keyframes bounce { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
 
-.stChatInput { border-top: 2px solid #1a1a2e !important; padding-top: 0.8rem !important; }
+.stChatInput { 
+    border-top: 2px solid #1a1a2e !important; 
+    padding-top: 0.8rem !important; 
+}
+
 .stChatInput textarea {
-    background: #fff !important; border: 1.5px solid #1a1a2e !important;
-    border-radius: 12px !important; font-family: 'DM Sans', sans-serif !important;
+    background: #fff !important; 
+    border: 1.5px solid #1a1a2e !important;
+    border-radius: 12px !important; 
+    font-family: 'DM Sans', sans-serif !important;
     color: #1a1a2e !important;
 }
 
 .stButton button {
-    background: transparent; border: 1.5px solid #e8d5a3;
-    color: #e8d5a3 !important; border-radius: 8px;
-    font-family: 'DM Sans', sans-serif; font-size: 0.85rem; transition: all 0.2s;
+    background: transparent; 
+    border: 1.5px solid #e8d5a3;
+    color: #e8d5a3 !important; 
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; 
+    font-size: 0.85rem; 
+    transition: all 0.2s;
 }
-.stButton button:hover { background: #e8d5a3; color: #1a1a2e !important; }
 
-.chip-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
-.chip {
-    background: #fff; border: 1.5px solid #1a1a2e; border-radius: 20px;
-    padding: 0.3rem 0.9rem; font-size: 0.82rem; color: #1a1a2e;
-    cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif;
+.stButton button:hover { 
+    background: #e8d5a3; 
+    color: #1a1a2e !important; 
+    border-color: #1a1a2e;
 }
-.chip:hover { background: #1a1a2e; color: #f5f0e8; }
+
+.chip-row { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 0.5rem; 
+    margin: 1rem 0; 
+}
+
+.chip {
+    background: #fff; 
+    border: 1.5px solid #1a1a2e; 
+    border-radius: 20px;
+    padding: 0.3rem 0.9rem; 
+    font-size: 0.82rem; 
+    color: #1a1a2e;
+    cursor: pointer; 
+    transition: all 0.2s; 
+    font-family: 'DM Sans', sans-serif;
+}
+
+.chip:hover { 
+    background: #1a1a2e; 
+    color: #f5f0e8; 
+}
 
 ::-webkit-scrollbar { width: 5px; }
+
 ::-webkit-scrollbar-track { background: transparent; }
+
 ::-webkit-scrollbar-thumb { background: #c5b99a; border-radius: 10px; }
