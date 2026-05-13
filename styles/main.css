@@ -54,33 +54,40 @@ html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
 @keyframes bounce { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
 
 /* ========================================
-   CHAT INPUT ESTILO CHATGPT
+   CHAT INPUT FUNCIONAL + ESTILO CHATGPT
 ======================================== */
 
 .stChatInput {
-    position: sticky;
-    bottom: 0;
-
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
 
     background: transparent !important;
 
+    padding-top: 1rem !important;
+
+    padding-bottom: 1rem !important;
+
     border-top: none !important;
+}
+
+/* Container real */
+[data-testid="stChatInput"] {
+
+    background: transparent !important;
 
     max-width: 950px;
+
     margin: auto;
 }
 
-/* Caixa principal */
-.stChatInput > div {
+/* Caixa preta */
+[data-testid="stChatInput"] > div {
+
     background: #050816 !important;
 
     border: 1px solid rgba(255,255,255,0.08) !important;
 
     border-radius: 28px !important;
 
-    padding: 0.75rem 1rem !important;
+    padding: 0.55rem 0.8rem !important;
 
     box-shadow:
         0 0 0 1px rgba(255,255,255,0.03),
@@ -89,8 +96,8 @@ html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
     transition: all 0.25s ease;
 }
 
-/* Glow ao clicar */
-.stChatInput > div:focus-within {
+/* Glow */
+[data-testid="stChatInput"] > div:focus-within {
 
     border: 1px solid rgba(255,255,255,0.15) !important;
 
@@ -99,8 +106,8 @@ html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
         0 10px 40px rgba(0,0,0,0.5);
 }
 
-/* Área de digitação */
-.stChatInput textarea {
+/* Área texto */
+[data-testid="stChatInput"] textarea {
 
     background: transparent !important;
 
@@ -117,21 +124,20 @@ html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
     caret-color: white !important;
 }
 
-/* Remove borda azul */
-.stChatInput textarea:focus {
+/* Placeholder */
+[data-testid="stChatInput"] textarea::placeholder {
+
+    color: rgba(255,255,255,0.45) !important;
+}
+
+/* Remove outline */
+[data-testid="stChatInput"] textarea:focus {
+
     box-shadow: none !important;
 }
 
-/* Placeholder */
-.stChatInput textarea::placeholder {
-
-    color: rgba(255,255,255,0.45) !important;
-
-    opacity: 1;
-}
-
-/* Botão enviar */
-.stChatInput button {
+/* Botão */
+[data-testid="stChatInput"] button {
 
     background: #ff4b4b !important;
 
@@ -139,22 +145,23 @@ html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
 
     border-radius: 14px !important;
 
-    width: 46px !important;
-    height: 46px !important;
+    width: 42px !important;
+
+    height: 42px !important;
 
     transition: all 0.2s ease;
 }
 
 /* Hover botão */
-.stChatInput button:hover {
+[data-testid="stChatInput"] button:hover {
 
     background: #ff5c5c !important;
 
     transform: scale(1.05);
 }
 
-/* Ícone botão */
-.stChatInput button svg {
+/* Ícone */
+[data-testid="stChatInput"] button svg {
 
     color: white !important;
 }
