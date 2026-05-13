@@ -1,25 +1,37 @@
-# 🎓 UniBot — FAQ Acadêmico com HuggingFace + Streamlit
+# 🎓 UniBot — FAQ Acadêmico · Unigran Capital
 
-Chatbot temático para dúvidas universitárias, usando o modelo **Qwen2.5-1.5B-Instruct** (gratuito via HuggingFace Inference API) e interface em **Streamlit**.
+Chatbot de FAQ acadêmico para a Unigran Capital, usando o modelo **Llama-3.1-8B-Instruct** (gratuito via HuggingFace Inference API) e interface em **Streamlit**.
 
 ---
 
 ## 📁 Estrutura do projeto
 
 ```
-chatbot_faq/
-├── app.py            # Aplicação principal
-├── requirements.txt  # Dependências Python
-└── README.md         # Este arquivo
+├── app.py                      # Aplicação principal
+├── faq_data.json               # Perguntas e respostas do FAQ (editável sem código)
+├── requirements.txt            # Dependências Python
+├── prompts/
+│   └── system_prompt.md        # Prompt do bot (editável sem código)
+├── styles/
+│   └── main.css                # Estilos da interface
+└── templates/
+    ├── header.html             # Cabeçalho da página
+    ├── message_user.html       # Balão de mensagem do usuário
+    ├── message_bot.html        # Balão de mensagem do bot
+    ├── typing.html             # Indicador de digitando...
+    └── suggestions.html        # Chips de sugestão iniciais
 ```
 
 ---
 
 ## 🚀 Como rodar localmente
 
-### 1. Clone / baixe os arquivos
+### 1. Clone o repositório
 
-Coloque os arquivos numa pasta, ex: `chatbot_faq/`
+```bash
+git clone https://github.com/otzjoao/Chatbot3.git
+cd Chatbot3
+```
 
 ### 2. Crie um ambiente virtual (recomendado)
 
@@ -43,7 +55,7 @@ pip install -r requirements.txt
 
 1. Acesse: https://huggingface.co/settings/tokens
 2. Clique em **"New token"**
-3. Escolha tipo **"Read"** (gratuito)
+3. Escolha tipo **"Read"**
 4. Copie o token gerado (começa com `hf_...`)
 
 ### 5. Execute o app
@@ -52,27 +64,48 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-O browser abrirá automaticamente em `http://localhost:8501`
-
-### 6. Insira o token na interface
-
-Na barra lateral esquerda, cole seu token HuggingFace no campo **"🔑 Token HuggingFace"**.
+O browser abrirá automaticamente em `http://localhost:8501`.  
+Cole seu token no campo **🔑 Token HuggingFace** na barra lateral.
 
 ---
 
 ## 🌐 Deploy gratuito no Streamlit Cloud
 
-1. Faça upload do projeto num repositório GitHub
-2. Acesse https://share.streamlit.io
-3. Conecte seu repositório e selecione `app.py`
-4. Em **"Secrets"**, adicione:
+1. Acesse https://share.streamlit.io e conecte seu repositório GitHub
+2. Selecione `app.py` como arquivo principal
+3. Em **"Secrets"**, adicione:
    ```toml
    HF_TOKEN = "hf_seu_token_aqui"
    ```
-5. No `app.py`, substitua a linha do `text_input` por:
-   ```python
-   hf_token = st.secrets.get("HF_TOKEN", "")
-   ```
+4. Clique em **Deploy** — o token será lido automaticamente pelo app
+
+---
+
+## ✏️ Como personalizar sem mexer no código
+
+### Adicionar ou editar perguntas do FAQ → `faq_data.json`
+
+Cada entrada segue este formato:
+
+```json
+{
+  "palavras_chave": ["biblioteca", "livro", "empréstimo"],
+  "resposta": "📚 **Biblioteca**\n\nHorário: 7h–22h..."
+}
+```
+
+- **`palavras_chave`:** termos que ativam a resposta (acentos e maiúsculas são ignorados automaticamente)
+- **`resposta`:** texto exibido, suporta Markdown (`**negrito**`, `- listas`, tabelas)
+
+O arquivo pode ser editado diretamente pelo GitHub (clique no arquivo → ✏️ editar → salvar), sem precisar de editor de código.
+
+### Alterar o comportamento do bot → `prompts/system_prompt.md`
+
+Edite o texto para mudar o contexto, tom ou lista de assuntos que o bot responde.
+
+### Alterar a aparência → `styles/main.css`
+
+Edite cores, fontes e espaçamentos sem tocar no Python.
 
 ---
 
@@ -80,25 +113,17 @@ Na barra lateral esquerda, cole seu token HuggingFace no campo **"🔑 Token Hug
 
 | Propriedade | Valor |
 |-------------|-------|
-| Modelo | Qwen/Qwen2.5-1.5B-Instruct |
-| Parâmetros | 1.5 bilhões |
+| Modelo | meta-llama/Llama-3.1-8B-Instruct |
+| Parâmetros | 8 bilhões |
 | Custo | Gratuito (HF Inference API) |
 | Idioma | Português / Multilíngue |
-| Limite gratuito | ~1.000 req/dia |
 
 ---
 
-## ✏️ Personalizar o tema do chatbot
+## 🛡️ Segurança
 
-No arquivo `app.py`, edite a variável `SYSTEM_PROMPT` para adaptar o chatbot ao seu contexto:
-
-```python
-SYSTEM_PROMPT = """Você é o UniBot, assistente de...
-Responda sobre:
-- Tópico 1
-- Tópico 2
-..."""
-```
+- Input do usuário é sanitizado com `html.escape()` antes de ser renderizado, prevenindo HTML injection
+- O token HuggingFace nunca é exposto no código — use sempre `st.secrets` no deploy
 
 ---
 
@@ -106,4 +131,4 @@ Responda sobre:
 
 - [Streamlit](https://streamlit.io) — Interface web
 - [HuggingFace Hub](https://huggingface.co) — API de inferência gratuita
-- [Qwen2.5](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct) — Modelo de linguagem
+- [Llama 3.1](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct) — Modelo de linguagem

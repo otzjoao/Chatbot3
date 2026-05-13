@@ -3,8 +3,6 @@ import json
 import re
 import unicodedata
 from pathlib import Path
-import random
-
 
 import streamlit as st
 from huggingface_hub import InferenceClient
@@ -156,16 +154,7 @@ for msg in st.session_state.messages:
 
 # ── Input do usuário ─────────────────────────────────────────────────────────
 
-placeholders = [
-    "Pergunte sobre matrícula...",
-    "Como funciona o TCC?",
-    "Digite sua dúvida acadêmica...",
-    "Como posso ajudar hoje?"
-]
-
-user_input = st.chat_input(
-    placeholder=random.choice(placeholders)
-)
+user_input = st.chat_input("Digite sua dúvida acadêmica...")
 
 if user_input:
     if not hf_token:
