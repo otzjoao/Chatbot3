@@ -113,8 +113,9 @@ with st.sidebar:
     st.markdown("""
     Modelo: **Llama-3.1-8B-Instruct**
     Parâmetros: **8 bilhões**
-    Idioma: 🇧🇷 Português
-    API: HuggingFace (gratuita)
+    Idioma: 🇧🇷 **Português**
+    API: **HuggingFace (gratuita)**
+    **Parâmetros atualizados até dezembro de 2023**
     """)
 
     try:
