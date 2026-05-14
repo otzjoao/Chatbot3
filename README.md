@@ -26,7 +26,7 @@ Chatbot de FAQ acadêmico para a Unigran Capital, usando o modelo **Llama-3.1-8B
 
 ## 🚀 Como rodar localmente
 
-###Usando python 3.11.9
+### Usando python 3.11.9
 
 ### 1. Clone o repositório
 
@@ -39,30 +39,56 @@ cd Chatbot3
 
 ```bash
 python -m venv venv
+```
+# adicione a venv no .gitignore!!!!!!!!!!
 
-#adiciona a venv no .gitignore
-
+### 3. Ative seu ambiente virtual
+```bash
 # Windows
 venv\Scripts\activate
+```
 
+```bash
 # Linux/Mac
 source venv/bin/activate
 ```
 
-### 3. Instale as dependências
+### 4. Instale as dependências
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Obtenha seu token HuggingFace (gratuito) (para não-colaboradores)
+### 5. Obtenha seu token HuggingFace (gratuito) (para não-colaboradores)
 
 1. Acesse: https://huggingface.co/settings/tokens
 2. Clique em **"New token"**
 3. Escolha tipo **"Read"**
 4. Copie o token gerado (começa com `hf_...`)
 
-### 5. Execute o app
+### 6. Esconda sua propria chave da API
+
+1. Crie a pasta: .streamlit/
+2. Dentro da pasta crie o arquivo: secrets.toml
+3. Dentro do arquivo coloque sua chave:
+   ```bash
+   HF_TOKEN = "hf_seu_token_aqui"
+   ```
+### 7. Esconda tudo no seu .gitignore
+
+```.gitignore
+#Diretórios
+venv
+.streamlit
+
+#Arquivos
+
+
+#Outros
+__pycache__/
+```
+
+### 8. Execute o app
 
 ```bash
 streamlit run app.py
