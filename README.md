@@ -38,6 +38,8 @@ cd Chatbot3
 ```bash
 python -m venv venv
 
+#adiciona a venv no .gitignore
+
 # Windows
 venv\Scripts\activate
 
