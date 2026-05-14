@@ -26,6 +26,8 @@ Chatbot de FAQ acadêmico para a Unigran Capital, usando o modelo **Llama-3.1-8B
 
 ## 🚀 Como rodar localmente
 
+###Usando python 3.11.9
+
 ### 1. Clone o repositório
 
 ```bash
