@@ -26,7 +26,7 @@ Chatbot de FAQ acadêmico para a Unigran Capital, usando o modelo **Llama-3.1-8B
 
 ## 🚀 Como rodar localmente
 
-###Usando python 3.11.9
+### Usando python 3.11.9
 
 ### 1. Clone o repositório
 
@@ -39,12 +39,15 @@ cd Chatbot3
 
 ```bash
 python -m venv venv
+```
+# adicione a venv no .gitignore
 
-#adiciona a venv no .gitignore
-
+```bash
 # Windows
 venv\Scripts\activate
+```
 
+```bash
 # Linux/Mac
 source venv/bin/activate
 ```
