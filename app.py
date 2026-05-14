@@ -63,7 +63,7 @@ def get_client(token: str) -> InferenceClient:
         st.session_state.hf_token_used = token
     return st.session_state.hf_client
 
-def chat_with_llama(messages: list, token: str, temperature: float, max_tokens: int) -> str:
+def chat_with_llama(messages: list, token: str, temperature: float, max_tokens: int) -> tuple[str, bool]:
     client = get_client(token)
     system = [{"role": "system", "content": load_prompt("system_prompt.md")}]
     response = client.chat_completion(
@@ -71,7 +71,9 @@ def chat_with_llama(messages: list, token: str, temperature: float, max_tokens: 
         temperature=temperature,
         max_tokens=max_tokens,
     )
-    return response.choices[0].message.content
+    choice = response.choices[0]
+    foi_cortado = choice.finish_reason == "length"
+    return choice.message.content, foi_cortado
 
 
 # ── Configuração da página ───────────────────────────────────────────────────
@@ -106,7 +108,7 @@ with st.sidebar:
     st.markdown("### ⚙️ Configurações")
     temperature = st.slider("Criatividade", 0.1, 1.0, 0.4, 0.05,
                             help="Valores baixos = respostas mais diretas")
-    max_tokens = st.slider("Tamanho da resposta", 100, 512, 256, 50)
+    max_tokens = 512
 
     st.markdown("---")
     st.markdown("### 📚 Sobre")
@@ -134,13 +136,46 @@ with st.sidebar:
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
+if "chip_selecionado" not in st.session_state:
+    st.session_state.chip_selecionado = None
+
+if "resposta_cortada" not in st.session_state:
+    st.session_state.resposta_cortada = False
+
 
 # ── Header e sugestões ───────────────────────────────────────────────────────
 
 st.markdown(load_template("header.html"), unsafe_allow_html=True)
 
+CHIPS = [
+    ("📅", "Calendário acadêmico"),
+    ("📝", "Como fazer matrícula?"),
+    ("💰", "Bolsas e auxílios"),
+    ("📄", "TCC e monografia"),
+    ("🔄", "Trancamento de curso"),
+]
+
 if not st.session_state.messages:
-    st.markdown(load_template("suggestions.html"), unsafe_allow_html=True)
+    st.markdown(
+        "<div style='text-align:center; color:#5a5a7a; margin-bottom:1rem; font-size:0.9rem;'>"
+        "👋 Olá! Sou o UniBot da Unigran Capital. Como posso te ajudar hoje?<br>"
+        "<small>Experimente perguntar sobre:</small></div>",
+        unsafe_allow_html=True,
+    )
+    # Linha 1: 3 chips
+    _, c1, c2, c3, _ = st.columns([0.5, 2, 2, 2, 0.5])
+    for col, (emoji, texto) in zip([c1, c2, c3], CHIPS[:3]):
+        with col:
+            if st.button(f"{emoji} {texto}", key=f"chip_{texto}", use_container_width=True):
+                st.session_state.chip_selecionado = texto
+                st.rerun()
+    # Linha 2: 2 chips centralizados
+    _, c4, c5, _ = st.columns([1.5, 2, 2, 1.5])
+    for col, (emoji, texto) in zip([c4, c5], CHIPS[3:]):
+        with col:
+            if st.button(f"{emoji} {texto}", key=f"chip_{texto}", use_container_width=True):
+                st.session_state.chip_selecionado = texto
+                st.rerun()
 
 
 # ── Histórico de mensagens ───────────────────────────────────────────────────
@@ -153,9 +188,43 @@ for msg in st.session_state.messages:
         st.markdown(render_template("message_bot.html", content=msg["content"]), unsafe_allow_html=True)
 
 
+# ── Botão de continuar resposta ─────────────────────────────────────────────
+
+if st.session_state.resposta_cortada:
+    st.markdown(
+        "<div style='text-align:center; color:#5a5a7a; font-size:0.85rem; margin: 0.5rem 0;'>"
+        "⚠️ A resposta foi cortada por ser muito longa.</div>",
+        unsafe_allow_html=True,
+    )
+    _, btn_col, _ = st.columns([2, 2, 2])
+    with btn_col:
+        if st.button("➕ Continuar resposta", use_container_width=True):
+            st.session_state.resposta_cortada = False
+            if not hf_token:
+                st.warning("⚠️ Insira seu token HuggingFace na barra lateral.")
+                st.stop()
+            with st.empty():
+                st.markdown(load_template("typing.html"), unsafe_allow_html=True)
+                try:
+                    continuacao, foi_cortado = chat_with_llama(
+                        st.session_state.messages + [{"role": "user", "content": "Continue a resposta do ponto onde parou."}],
+                        hf_token,
+                        temperature,
+                        max_tokens,
+                    )
+                except Exception as e:
+                    continuacao = f"❌ Erro ao continuar: {html.escape(str(e))}"
+                    foi_cortado = False
+                st.markdown(render_template("message_bot.html", content=continuacao), unsafe_allow_html=True)
+            st.session_state.messages.append({"role": "assistant", "content": continuacao})
+            st.session_state.resposta_cortada = foi_cortado
+            st.rerun()
+
+
 # ── Input do usuário ─────────────────────────────────────────────────────────
 
-user_input = st.chat_input("Digite sua dúvida acadêmica...")
+user_input = st.chat_input("Digite sua dúvida acadêmica...") or st.session_state.chip_selecionado
+st.session_state.chip_selecionado = None  # limpa após consumir
 
 if user_input:
     if not hf_token:
@@ -175,10 +244,11 @@ if user_input:
             # 1️⃣ Consulta o JSON local (instantâneo, sem API)
             # A busca usa o input original (sem escape) para não quebrar acentos
             response = buscar_faq(user_input)
+            foi_cortado = False
 
             # 2️⃣ Se não achou, chama a IA com o cliente reutilizado
             if response is None:
-                response = chat_with_llama(
+                response, foi_cortado = chat_with_llama(
                     st.session_state.messages,
                     hf_token,
                     temperature,
@@ -189,7 +259,11 @@ if user_input:
 
         except Exception as e:
             response = f"❌ Erro ao conectar com a API: {html.escape(str(e))}"
+            foi_cortado = False
 
         st.markdown(render_template("message_bot.html", content=response), unsafe_allow_html=True)
 
     st.session_state.messages.append({"role": "assistant", "content": response})
+    st.session_state.resposta_cortada = foi_cortado
+    if foi_cortado:
+        st.rerun()
