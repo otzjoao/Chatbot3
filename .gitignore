@@ -2,6 +2,7 @@
 venv
 
 #Arquivos
+.secrets
 
 #Outros
 __pycache__/
