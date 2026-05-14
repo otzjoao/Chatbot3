@@ -55,7 +55,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 4. Obtenha seu token HuggingFace (gratuito)
+### 4. Obtenha seu token HuggingFace (gratuito) (para não-colaboradores)
 
 1. Acesse: https://huggingface.co/settings/tokens
 2. Clique em **"New token"**
@@ -69,11 +69,11 @@ streamlit run app.py
 ```
 
 O browser abrirá automaticamente em `http://localhost:8501`.  
-Cole seu token no campo **🔑 Token HuggingFace** na barra lateral.
+Cole seu token no campo **🔑 Token HuggingFace** na barra lateral. (para não-colaboradores)
 
 ---
 
-## 🌐 Deploy gratuito no Streamlit Cloud
+## 🌐 Deploy gratuito no Streamlit Cloud (para não-colaboradores)
 
 1. Acesse https://share.streamlit.io e conecte seu repositório GitHub
 2. Selecione `app.py` como arquivo principal
