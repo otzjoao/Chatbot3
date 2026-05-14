@@ -1,8 +1,9 @@
 #Diretórios
 venv
+.streamlit
 
 #Arquivos
-.secrets
+
 
 #Outros
 __pycache__/
