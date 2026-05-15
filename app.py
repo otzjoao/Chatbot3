@@ -2,6 +2,7 @@ import html
 import json
 import re
 import unicodedata
+import markdown as md_lib
 from pathlib import Path
 
 import streamlit as st
@@ -26,6 +27,11 @@ def load_css() -> str:
 def load_prompt(name: str) -> str:
     path = Path(__file__).parent / "prompts" / name
     return path.read_text(encoding="utf-8").strip()
+
+
+def md_para_html(texto: str) -> str:
+    """Converte Markdown para HTML seguro para injetar nos templates."""
+    return md_lib.markdown(texto, extensions=["tables", "nl2br"])
 
 
 # ── FAQ ──────────────────────────────────────────────────────────────────────
@@ -140,7 +146,7 @@ with st.sidebar:
             st.session_state.theme = "light" if st.session_state.theme == "dark" else "dark"
             st.rerun()
 
-    st.markdown("---")
+    # st.markdown("---")
 
     hf_token = st.secrets.get("HF_TOKEN", "") if hasattr(st, "secrets") else ""
     if not hf_token:
@@ -229,7 +235,7 @@ for msg in st.session_state.messages:
     if msg["role"] == "user":
         st.markdown(render_template("message_user.html", content=msg["content"]), unsafe_allow_html=True)
     else:
-        st.markdown(render_template("message_bot.html", content=msg["content"]), unsafe_allow_html=True)
+        st.markdown(render_template("message_bot.html", content=md_para_html(msg["content"])), unsafe_allow_html=True)
 
 
 # ── Botão de continuar resposta ─────────────────────────────────────────────
@@ -259,7 +265,7 @@ if st.session_state.resposta_cortada:
                 except Exception as e:
                     continuacao = f"❌ Erro ao continuar: {html.escape(str(e))}"
                     foi_cortado = False
-                st.markdown(render_template("message_bot.html", content=continuacao), unsafe_allow_html=True)
+                st.markdown(render_template("message_bot.html", content=md_para_html(continuacao)), unsafe_allow_html=True)
             st.session_state.messages.append({"role": "assistant", "content": continuacao})
             st.session_state.resposta_cortada = foi_cortado
             st.rerun()
@@ -280,28 +286,29 @@ if user_input:
     st.session_state.messages.append({"role": "user", "content": safe_input})
     st.markdown(render_template("message_user.html", content=safe_input), unsafe_allow_html=True)
 
-    with st.empty():
-        st.markdown(load_template("typing.html"), unsafe_allow_html=True)
+    typing_placeholder = st.empty()
+    typing_placeholder.markdown(load_template("typing.html"), unsafe_allow_html=True)
 
-        try:
-            response = buscar_faq(user_input)
-            foi_cortado = False
+    try:
+        response = buscar_faq(user_input)
+        foi_cortado = False
 
-            if response is None:
-                response, foi_cortado = chat_with_llama(
-                    st.session_state.messages,
-                    hf_token,
-                    temperature,
-                    max_tokens,
-                )
-            else:
-                response = "📋 **Resposta do FAQ:**\n\n" + response
+        if response is None:
+            response, foi_cortado = chat_with_llama(
+                st.session_state.messages,
+                hf_token,
+                temperature,
+                max_tokens,
+            )
+        else:
+            response = "📋 **Resposta do FAQ:\n\n" + response
 
-        except Exception as e:
-            response = f"❌ Erro ao conectar com a API: {html.escape(str(e))}"
-            foi_cortado = False
+    except Exception as e:
+        response = f"❌ Erro ao conectar com a API: {html.escape(str(e))}"
+        foi_cortado = False
 
-        st.markdown(render_template("message_bot.html", content=response), unsafe_allow_html=True)
+    typing_placeholder.empty()
+    st.markdown(render_template("message_bot.html", content=md_para_html(response)), unsafe_allow_html=True)
 
     st.session_state.messages.append({"role": "assistant", "content": response})
     st.session_state.resposta_cortada = foi_cortado
