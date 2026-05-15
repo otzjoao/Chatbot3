@@ -1,209 +1,478 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
 
-html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
+/* ═══════════════════════════════════════════════
+   DESIGN TOKENS — DARK MODE (padrão)
+═══════════════════════════════════════════════ */
+:root {
+  --bg-base:        #08090d;
+  --bg-surface:     #0e0f17;
+  --bg-glass:       rgba(255,255,255,0.04);
+  --bg-glass-hover: rgba(255,255,255,0.07);
+  --border:         rgba(255,255,255,0.07);
+  --border-accent:  rgba(99,179,237,0.25);
 
+  --text-primary:   #eef0f8;
+  --text-secondary: #7a8099;
+  --text-muted:     #44485a;
+
+  --accent-1:       #4f8ef7;        /* azul principal */
+  --accent-2:       #7b5ea7;        /* violeta */
+  --accent-glow:    rgba(79,142,247,0.18);
+  --accent-glow-2:  rgba(123,94,167,0.14);
+
+  --user-bg:        linear-gradient(135deg, #4f8ef7 0%, #7b5ea7 100%);
+  --user-text:      #ffffff;
+
+  --bot-bg:         rgba(255,255,255,0.04);
+  --bot-border:     rgba(255,255,255,0.07);
+
+  --sidebar-bg:     #0b0c14;
+  --sidebar-border: rgba(255,255,255,0.06);
+
+  --radius-sm:      10px;
+  --radius-md:      16px;
+  --radius-lg:      22px;
+  --radius-xl:      30px;
+
+  --shadow-glow:    0 0 40px rgba(79,142,247,0.12);
+  --shadow-card:    0 4px 24px rgba(0,0,0,0.4);
+  --shadow-msg:     0 2px 12px rgba(0,0,0,0.25);
+
+  --transition:     0.22s cubic-bezier(0.4,0,0.2,1);
+  --transition-slow:0.45s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ── LIGHT MODE ─────────────────────────────── */
+[data-theme="light"] {
+  --bg-base:        #f4f5fb;
+  --bg-surface:     #ffffff;
+  --bg-glass:       rgba(255,255,255,0.7);
+  --bg-glass-hover: rgba(255,255,255,0.9);
+  --border:         rgba(0,0,0,0.07);
+  --border-accent:  rgba(79,142,247,0.3);
+
+  --text-primary:   #0d1020;
+  --text-secondary: #5a6080;
+  --text-muted:     #aab0c4;
+
+  --accent-glow:    rgba(79,142,247,0.1);
+  --accent-glow-2:  rgba(123,94,167,0.08);
+
+  --bot-bg:         #ffffff;
+  --bot-border:     rgba(0,0,0,0.06);
+
+  --sidebar-bg:     #fafbff;
+  --sidebar-border: rgba(0,0,0,0.06);
+
+  --shadow-card:    0 4px 24px rgba(0,0,0,0.08);
+  --shadow-msg:     0 2px 12px rgba(0,0,0,0.06);
+}
+
+/* ═══════════════════════════════════════════════
+   BASE
+═══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, [class*="css"] {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* APP BACKGROUND */
 .stApp {
-    background: #f5f0e8;
-    background-image:
-        radial-gradient(ellipse at 20% 0%, #d4e4f7 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 100%, #e8d5f0 0%, transparent 50%);
+  background: var(--bg-base) !important;
+  background-image:
+    radial-gradient(ellipse 60% 50% at 15% 0%, var(--accent-glow) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 85% 100%, var(--accent-glow-2) 0%, transparent 60%) !important;
+  transition: background var(--transition-slow);
 }
 
-[data-testid="stSidebar"] { 
-    background: #1a1a2e !important; 
-    border-right: 2px solid #e8d5a3; 
+/* ═══════════════════════════════════════════════
+   SIDEBAR
+═══════════════════════════════════════════════ */
+[data-testid="stSidebar"] {
+  background: var(--sidebar-bg) !important;
+  border-right: 1px solid var(--sidebar-border) !important;
+  backdrop-filter: blur(20px) !important;
 }
 
-[data-testid="stSidebar"] * { color: #f0e6d3 !important; }
+[data-testid="stSidebar"] * {
+  color: var(--text-primary) !important;
+}
 
 [data-testid="stSidebar"] .stMarkdown h1,
 [data-testid="stSidebar"] .stMarkdown h2,
-[data-testid="stSidebar"] .stMarkdown h3 { 
-    color: #e8d5a3 !important; 
-    font-family: 'DM Serif Display', serif !important; 
+[data-testid="stSidebar"] .stMarkdown h3 {
+  font-family: 'Syne', sans-serif !important;
+  color: var(--text-primary) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
 }
 
-[data-testid="stSidebar"] hr { border-color: #333355 !important; }
-
-.main-header { 
-    text-align: center; 
-    padding: 2rem 0 1rem 0; 
-    border-bottom: 2px solid #1a1a2e; 
-    margin-bottom: 1.5rem; 
+[data-testid="stSidebar"] hr {
+  border-color: var(--border) !important;
+  margin: 1rem 0 !important;
 }
 
-.main-header h1 { 
-    font-family: 'DM Serif Display', serif; 
-    font-size: 2.8rem; color: #1a1a2e; 
-    margin: 0; 
-    letter-spacing: -1px; 
+/* Slider label */
+[data-testid="stSidebar"] label { color: var(--text-secondary) !important; }
+
+/* ═══════════════════════════════════════════════
+   MAIN HEADER
+═══════════════════════════════════════════════ */
+.main-header {
+  text-align: center;
+  padding: 2.5rem 0 1.5rem;
+  margin-bottom: 1rem;
+  position: relative;
 }
 
-.main-header p { color: #5a5a7a; 
-    font-size: 0.95rem; 
-    font-weight: 300; 
-    margin: 0.3rem 0 0 0; 
+.main-header::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  margin: 1.2rem auto 0;
+  border-radius: 2px;
 }
 
-.chat-wrapper { 
-    display: flex; 
-    flex-direction: column; 
-    gap: 1rem; 
-    padding: 0.5rem 0; 
+.main-header h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.04em;
+  line-height: 1;
 }
 
-.msg-user { 
-    display: flex; 
-    justify-content: flex-end; 
+/* Gradient em apenas uma parte do título */
+.main-header h1 .brand-accent {
+  background: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.main-header p {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 400;
+  margin: 0.5rem 0 0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════════════
+   MENSAGENS
+═══════════════════════════════════════════════ */
+.chat-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0.25rem 0;
+  animation: msgIn 0.35s cubic-bezier(0.4,0,0.2,1) both;
+}
+
+@keyframes msgIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* — Mensagem do usuário — */
+.msg-user {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0.4rem 0;
 }
 
 .msg-user .bubble {
-    background: #1a1a2e; 
-    color: #f5f0e8;
-    border-radius: 18px 18px 4px 18px;
-    padding: 0.75rem 1.1rem; 
-    max-width: 75%;
-    font-size: 0.92rem; 
-    line-height: 1.5;
-    box-shadow: 0 2px 8px rgba(26,26,46,0.15);
+  background: var(--user-bg);
+  color: var(--user-text);
+  border-radius: var(--radius-lg) var(--radius-lg) var(--radius-sm) var(--radius-lg);
+  padding: 0.8rem 1.2rem;
+  max-width: 72%;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  box-shadow: var(--shadow-msg), 0 0 20px rgba(79,142,247,0.15);
+  font-weight: 400;
+  word-break: break-word;
 }
 
-.msg-bot { 
-    display: flex; 
-    justify-content: flex-start; 
-    align-items: flex-start; 
-    gap: 0.6rem; 
+/* — Mensagem do bot — */
+.msg-bot {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin: 0.4rem 0;
 }
 
 .msg-bot .avatar {
-    background: #e8d5a3; 
-    color: #1a1a2e; 
-    border-radius: 50%;
-    width: 36px; 
-    height: 36px; 
-    display: flex; 
-    align-items: center;
-    justify-content: center; 
-    font-size: 1.1rem; 
-    flex-shrink: 0;
-    margin-top: 2px; 
-    border: 2px solid #1a1a2e;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+  box-shadow: 0 0 18px rgba(79,142,247,0.25);
 }
 
 .msg-bot .bubble {
-    background: #ffffff; 
-    color: #1a1a2e;
-    border-radius: 4px 18px 18px 18px;
-    padding: 0.75rem 1.1rem; 
-    max-width: 75%;
-    font-size: 0.92rem; 
-    line-height: 1.6;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    border: 1px solid #e0ddd5;
+  background: var(--bot-bg);
+  color: var(--text-primary);
+  border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) var(--radius-sm);
+  padding: 0.85rem 1.2rem;
+  max-width: 75%;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  box-shadow: var(--shadow-msg);
+  border: 1px solid var(--bot-border);
+  word-break: break-word;
+  backdrop-filter: blur(12px);
 }
 
-.typing-indicator { 
-    display: flex; 
-    gap: 4px; 
-    align-items: center; 
-    padding: 0.4rem 0; 
+/* Markdown dentro da bolha */
+.msg-bot .bubble p { margin: 0 0 0.5rem; }
+.msg-bot .bubble p:last-child { margin: 0; }
+.msg-bot .bubble code {
+  background: rgba(99,179,237,0.12);
+  color: var(--accent-1);
+  border-radius: 5px;
+  padding: 0.15em 0.5em;
+  font-size: 0.85em;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+.msg-bot .bubble pre {
+  background: rgba(0,0,0,0.25);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  margin: 0.6rem 0;
+}
+.msg-bot .bubble strong { color: var(--accent-1); font-weight: 600; }
+.msg-bot .bubble em { color: var(--text-secondary); }
+
+/* ═══════════════════════════════════════════════
+   TYPING INDICATOR — premium
+═══════════════════════════════════════════════ */
+.typing-indicator {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  padding: 0.25rem 0.15rem;
 }
 
-.typing-indicator span { 
-    width: 8px; 
-    height: 8px; 
-    background: #5a5a7a; 
-    border-radius: 50%; 
-    animation: bounce 1.2s infinite; 
+.typing-indicator span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-1);
+  animation: typePulse 1.3s ease-in-out infinite;
+  opacity: 0.3;
 }
 
-.typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+.typing-indicator span:nth-child(1) { animation-delay: 0s; }
+.typing-indicator span:nth-child(2) { animation-delay: 0.18s; }
+.typing-indicator span:nth-child(3) { animation-delay: 0.36s; }
 
-.typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typePulse {
+  0%, 80%, 100% { opacity: 0.2; transform: scale(0.85); }
+  40%           { opacity: 1;   transform: scale(1.2); }
+}
 
-@keyframes bounce { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
+/* ═══════════════════════════════════════════════
+   CHAT INPUT
+═══════════════════════════════════════════════ */
+.stChatInput {
+  border-top: 1px solid var(--border) !important;
+  padding-top: 0.8rem !important;
+  background: transparent !important;
+}
 
-.stChatInput { 
-    border-top: 2px solid #1a1a2e !important; 
-    padding-top: 0.8rem !important; 
+.stChatInput > div {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  transition: border-color var(--transition), box-shadow var(--transition) !important;
+}
+
+.stChatInput > div:focus-within {
+  border-color: var(--border-accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-glow), var(--shadow-glow) !important;
 }
 
 .stChatInput textarea {
-    background: #fff !important; 
-    border: 1.5px solid #1a1a2e !important;
-    border-radius: 12px !important; 
-    font-family: 'DM Sans', sans-serif !important;
-    color: #1a1a2e !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: var(--radius-lg) !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.93rem !important;
+  color: var(--text-primary) !important;
+  caret-color: var(--accent-1) !important;
 }
 
-.stButton button {
-    background: transparent; 
-    border: 1.5px solid #e8d5a3;
-    color: #e8d5a3 !important; 
-    border-radius: 8px;
-    font-family: 'DM Sans', sans-serif; 
-    font-size: 0.85rem; 
-    transition: all 0.2s;
+.stChatInput textarea::placeholder {
+  color: var(--text-muted) !important;
 }
 
-.stButton button:hover { 
-    background: #e8d5a3; 
-    color: #1a1a2e !important; 
-    border-color: #1a1a2e;
+.stChatInput button {
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2)) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  color: #fff !important;
+  transition: opacity var(--transition), transform var(--transition) !important;
 }
 
-.chip-row { 
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 0.5rem; 
-    margin: 1rem 0; 
+.stChatInput button:hover {
+  opacity: 0.88 !important;
+  transform: scale(1.04) !important;
 }
 
-.chip {
-    background: #fff; 
-    border: 1.5px solid #1a1a2e; 
-    border-radius: 20px;
-    padding: 0.3rem 0.9rem; 
-    font-size: 0.82rem; 
-    color: #1a1a2e;
-    cursor: pointer; 
-    transition: all 0.2s; 
-    font-family: 'DM Sans', sans-serif;
-}
-
-.chip:hover { 
-    background: #1a1a2e; 
-    color: #f5f0e8; 
-}
-
-/* Chips clicáveis (st.button estilizados) */
+/* ═══════════════════════════════════════════════
+   CHIPS / BOTÕES DE SUGESTÃO
+═══════════════════════════════════════════════ */
 div[data-testid="stHorizontalBlock"] .stButton button {
-    background: #ffffff !important;
-    border: 1.5px solid #1a1a2e !important;
-    border-radius: 24px !important;
-    color: #1a1a2e !important;
-    font-size: 0.88rem !important;
-    font-family: 'DM Sans', sans-serif !important;
-    font-weight: 400 !important;
-    padding: 0.5rem 1rem !important;
-    transition: all 0.2s ease !important;
-    white-space: normal !important;
-    line-height: 1.3 !important;
-    box-shadow: 0 1px 4px rgba(26,26,46,0.08) !important;
-    height: auto !important;
-    min-height: 2.4rem !important;
+  background: var(--bg-glass) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-xl) !important;
+  color: var(--text-secondary) !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  padding: 0.55rem 1rem !important;
+  transition: all var(--transition) !important;
+  white-space: normal !important;
+  line-height: 1.3 !important;
+  height: auto !important;
+  min-height: 2.4rem !important;
+  backdrop-filter: blur(10px) !important;
 }
 
 div[data-testid="stHorizontalBlock"] .stButton button:hover {
-    background: #1a1a2e !important;
-    color: #f5f0e8 !important;
-    border-color: #1a1a2e !important;
-    box-shadow: 0 2px 8px rgba(26,26,46,0.18) !important;
-    transform: translateY(-1px) !important;
+  background: var(--bg-glass-hover) !important;
+  border-color: var(--border-accent) !important;
+  color: var(--text-primary) !important;
+  box-shadow: 0 0 16px var(--accent-glow) !important;
+  transform: translateY(-2px) !important;
 }
 
-::-webkit-scrollbar { width: 5px; }
+/* Botão da sidebar (limpar conversa) */
+[data-testid="stSidebar"] .stButton button {
+  background: transparent !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-secondary) !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.88rem !important;
+  width: 100% !important;
+  transition: all var(--transition) !important;
+}
 
+[data-testid="stSidebar"] .stButton button:hover {
+  background: rgba(239,68,68,0.1) !important;
+  border-color: rgba(239,68,68,0.35) !important;
+  color: #ef4444 !important;
+}
+
+/* ═══════════════════════════════════════════════
+   SLIDER
+═══════════════════════════════════════════════ */
+.stSlider [data-baseweb="slider"] [role="slider"] {
+  background: var(--accent-1) !important;
+  border: none !important;
+  box-shadow: 0 0 12px var(--accent-glow) !important;
+}
+
+.stSlider [data-baseweb="slider"] [data-testid="stThumbValue"] {
+  color: var(--accent-1) !important;
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 600 !important;
+}
+
+/* ═══════════════════════════════════════════════
+   WARNING / INFO
+═══════════════════════════════════════════════ */
+.stAlert {
+  background: var(--bg-glass) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-md) !important;
+  color: var(--text-primary) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+/* ═══════════════════════════════════════════════
+   TEXT INPUT (token HF)
+═══════════════════════════════════════════════ */
+.stTextInput input {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-primary) !important;
+  font-family: 'DM Sans', sans-serif !important;
+  transition: border-color var(--transition), box-shadow var(--transition) !important;
+}
+
+.stTextInput input:focus {
+  border-color: var(--border-accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-glow) !important;
+}
+
+/* ═══════════════════════════════════════════════
+   SCROLLBAR
+═══════════════════════════════════════════════ */
+::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--accent-1), var(--accent-2));
+  border-radius: 99px;
+}
 
-::-webkit-scrollbar-thumb { background: #c5b99a; border-radius: 10px; }
+/* ═══════════════════════════════════════════════
+   CAPTION / SMALL TEXT
+═══════════════════════════════════════════════ */
+.stCaption, [data-testid="stCaption"] {
+  color: var(--text-muted) !important;
+  font-size: 0.8rem !important;
+}
+
+/* ═══════════════════════════════════════════════
+   SELECTION COLOR
+═══════════════════════════════════════════════ */
+::selection {
+  background: rgba(79,142,247,0.25);
+  color: var(--text-primary);
+}
+
+/* ═══════════════════════════════════════════════
+   BOTÃO "CONTINUAR RESPOSTA"
+═══════════════════════════════════════════════ */
+.stButton button[kind="secondary"],
+div[data-testid="stVerticalBlock"] > div > .stButton button {
+  background: var(--bg-glass) !important;
+  border: 1px solid var(--border-accent) !important;
+  color: var(--accent-1) !important;
+  border-radius: var(--radius-md) !important;
+  transition: all var(--transition) !important;
+}
+
+.stButton button[kind="secondary"]:hover,
+div[data-testid="stVerticalBlock"] > div > .stButton button:hover {
+  background: rgba(79,142,247,0.08) !important;
+  box-shadow: 0 0 20px var(--accent-glow) !important;
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE MOBILE
+═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .main-header h1 { font-size: 1.8rem; }
+  .msg-user .bubble, .msg-bot .bubble { max-width: 88%; font-size: 0.9rem; }
+}

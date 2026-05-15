@@ -21,7 +21,7 @@ def render_template(name: str, **kwargs) -> str:
 
 def load_css() -> str:
     path = Path(__file__).parent / "styles" / "main.css"
-    return f"<style>{path.read_text(encoding='utf-8')}</style>"
+    return path.read_text(encoding="utf-8")
 
 def load_prompt(name: str) -> str:
     path = Path(__file__).parent / "prompts" / name
@@ -48,13 +48,9 @@ def buscar_faq(pergunta: str) -> str | None:
     return None
 
 
-# ── Cliente Llama (instância única por sessão) ───────────────────────────────
+# ── Cliente Llama ────────────────────────────────────────────────────────────
 
 def get_client(token: str) -> InferenceClient:
-    """
-    Reutiliza o cliente entre chamadas dentro da mesma sessão.
-    Uma nova instância é criada apenas se o token mudar.
-    """
     if "hf_client" not in st.session_state or st.session_state.get("hf_token_used") != token:
         st.session_state.hf_client = InferenceClient(
             model="meta-llama/Llama-3.1-8B-Instruct",
@@ -79,20 +75,71 @@ def chat_with_llama(messages: list, token: str, temperature: float, max_tokens: 
 # ── Configuração da página ───────────────────────────────────────────────────
 
 st.set_page_config(
-    page_title="FAQ Acadêmico · UniBot",
+    page_title="UniBot · FAQ Acadêmico",
     page_icon="🎓",
     layout="centered",
     initial_sidebar_state="expanded",
 )
 
-st.markdown(load_css(), unsafe_allow_html=True)
+# ── Tema: dark/light ─────────────────────────────────────────────────────────
+
+if "theme" not in st.session_state:
+    st.session_state.theme = "dark"
+
+theme_attr = "light" if st.session_state.theme == "light" else ""
+theme_icon = "☀️" if st.session_state.theme == "dark" else "🌙"
+
+# Inject CSS + tema no <html>
+css = load_css()
+st.markdown(f"""
+<style>{css}</style>
+<script>
+    // Aplica o atributo de tema ao elemento raiz
+    document.documentElement.setAttribute('data-theme', '{st.session_state.theme}');
+</script>
+""", unsafe_allow_html=True)
+
+# Fallback via classe no body (para o Streamlit)
+if st.session_state.theme == "light":
+    st.markdown("""
+    <style>
+      .stApp {
+        --bg-base: #f4f5fb !important;
+        --bg-surface: #ffffff !important;
+        --bg-glass: rgba(255,255,255,0.7) !important;
+        --bg-glass-hover: rgba(255,255,255,0.9) !important;
+        --border: rgba(0,0,0,0.07) !important;
+        --border-accent: rgba(79,142,247,0.3) !important;
+        --text-primary: #0d1020 !important;
+        --text-secondary: #5a6080 !important;
+        --text-muted: #aab0c4 !important;
+        --accent-glow: rgba(79,142,247,0.1) !important;
+        --accent-glow-2: rgba(123,94,167,0.08) !important;
+        --bot-bg: #ffffff !important;
+        --bot-border: rgba(0,0,0,0.06) !important;
+        --sidebar-bg: #fafbff !important;
+        --sidebar-border: rgba(0,0,0,0.06) !important;
+        --shadow-card: 0 4px 24px rgba(0,0,0,0.08) !important;
+        --shadow-msg: 0 2px 12px rgba(0,0,0,0.06) !important;
+        background: #f4f5fb !important;
+      }
+    </style>
+    """, unsafe_allow_html=True)
 
 
 # ── Sidebar ──────────────────────────────────────────────────────────────────
 
 with st.sidebar:
-    st.markdown("## 🎓 UniBot")
-    st.markdown("**FAQ Acadêmico Inteligente**")
+    col_logo, col_theme = st.columns([3, 1])
+    with col_logo:
+        st.markdown("## 🎓 UniBot")
+        st.markdown("**FAQ Acadêmico Inteligente**")
+    with col_theme:
+        st.markdown("<div style='padding-top:0.6rem'></div>", unsafe_allow_html=True)
+        if st.button(theme_icon, key="theme_toggle", help="Alternar tema"):
+            st.session_state.theme = "light" if st.session_state.theme == "dark" else "dark"
+            st.rerun()
+
     st.markdown("---")
 
     hf_token = st.secrets.get("HF_TOKEN", "") if hasattr(st, "secrets") else ""
@@ -113,11 +160,11 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("### 📚 Sobre")
     st.markdown("""
-    Modelo: **Llama-3.1-8B-Instruct**
-    Parâmetros: **8 bilhões**
-    Idioma: 🇧🇷 **Português**
-    API: **HuggingFace (gratuita)**
-    **Parâmetros atualizados até dezembro de 2023**
+    Modelo: **Llama-3.1-8B-Instruct**  
+    Parâmetros: **8 bilhões**  
+    Idioma: 🇧🇷 **Português**  
+    API: **HuggingFace (gratuita)**  
+    **Base: dez/2023**
     """)
 
     try:
@@ -157,19 +204,17 @@ CHIPS = [
 
 if not st.session_state.messages:
     st.markdown(
-        "<div style='text-align:center; color:#5a5a7a; margin-bottom:1rem; font-size:0.9rem;'>"
+        "<div style='text-align:center; color:var(--text-secondary,#7a8099); margin-bottom:1.2rem; font-size:0.88rem;'>"
         "👋 Olá! Sou o UniBot da Unigran Capital. Como posso te ajudar hoje?<br>"
-        "<small>Experimente perguntar sobre:</small></div>",
+        "<span style='font-size:0.82rem; opacity:0.7'>Experimente perguntar sobre:</span></div>",
         unsafe_allow_html=True,
     )
-    # Linha 1: 3 chips
     _, c1, c2, c3, _ = st.columns([0.5, 2, 2, 2, 0.5])
     for col, (emoji, texto) in zip([c1, c2, c3], CHIPS[:3]):
         with col:
             if st.button(f"{emoji} {texto}", key=f"chip_{texto}", use_container_width=True):
                 st.session_state.chip_selecionado = texto
                 st.rerun()
-    # Linha 2: 2 chips centralizados
     _, c4, c5, _ = st.columns([1.5, 2, 2, 1.5])
     for col, (emoji, texto) in zip([c4, c5], CHIPS[3:]):
         with col:
@@ -182,7 +227,6 @@ if not st.session_state.messages:
 
 for msg in st.session_state.messages:
     if msg["role"] == "user":
-        # Conteúdo do usuário já foi escapado antes de salvar no histórico
         st.markdown(render_template("message_user.html", content=msg["content"]), unsafe_allow_html=True)
     else:
         st.markdown(render_template("message_bot.html", content=msg["content"]), unsafe_allow_html=True)
@@ -192,7 +236,7 @@ for msg in st.session_state.messages:
 
 if st.session_state.resposta_cortada:
     st.markdown(
-        "<div style='text-align:center; color:#5a5a7a; font-size:0.85rem; margin: 0.5rem 0;'>"
+        "<div style='text-align:center; color:var(--text-muted,#44485a); font-size:0.82rem; margin:0.5rem 0;'>"
         "⚠️ A resposta foi cortada por ser muito longa.</div>",
         unsafe_allow_html=True,
     )
@@ -224,14 +268,13 @@ if st.session_state.resposta_cortada:
 # ── Input do usuário ─────────────────────────────────────────────────────────
 
 user_input = st.chat_input("Digite sua dúvida acadêmica...") or st.session_state.chip_selecionado
-st.session_state.chip_selecionado = None  # limpa após consumir
+st.session_state.chip_selecionado = None
 
 if user_input:
     if not hf_token:
         st.warning("⚠️ Insira seu token HuggingFace na barra lateral para usar o chatbot.")
         st.stop()
 
-    # 🛡️ HTML injection: escapa tags e javascript do input antes de qualquer uso
     safe_input = html.escape(user_input)
 
     st.session_state.messages.append({"role": "user", "content": safe_input})
@@ -241,12 +284,9 @@ if user_input:
         st.markdown(load_template("typing.html"), unsafe_allow_html=True)
 
         try:
-            # 1️⃣ Consulta o JSON local (instantâneo, sem API)
-            # A busca usa o input original (sem escape) para não quebrar acentos
             response = buscar_faq(user_input)
             foi_cortado = False
 
-            # 2️⃣ Se não achou, chama a IA com o cliente reutilizado
             if response is None:
                 response, foi_cortado = chat_with_llama(
                     st.session_state.messages,
