@@ -7,8 +7,8 @@
       "prazo de matrícula",
       "renovar matrícula"
     ],
-    "resposta": "📝 **Matrícula — Informações Gerais**\n\n- **Período:** A matrícula ocorre todo semestre, geralmente em **janeiro** (1º sem) e **julho** (2º sem).\n- **Como fazer:** Acesse a **Área Acadêmica** → *Acadêmico* → *Matrícula em Disciplinas*.\n- **Documentos necessários:** Nenhum documento adicional; basta estar com situação financeira regular.\n- **Dúvidas específicas:** Procure a **Secretaria Acadêmica**, sala B-12, de segunda a sexta, das 8h às 18h.\n\n> ⚠️ Alunos com pendências financeiras precisam regularizar antes de realizar a matrícula."
-  },
+    "resposta": "📝 **Matrícula — Informações Gerais**\n\n- **Período:** A matrícula ocorre todo semestre, geralmente dando início em **fevereiro** (1º sem) e **julho** (2º sem).\n- **Como fazer:** Acesse a **Área Acadêmica** → *Acadêmico* → *Matrícula em Disciplinas*.\n- **Documentos necessários:** DOCUMENTO DE IDENTIDADE,RESERVISTA,MODELO-19,TÍTULO DO ELEITOR,; basta estar com situação financeira regular.\n- **Dúvidas específicas:** Procure a **Secretaria Acadêmica**,segunda a sexta, das das 08h às 11h, das 13h às 17h, e das 18h às 22h no BLOCO A.\n\n> ⚠️ Alunos com pendências financeiras precisam regularizar antes de realizar a matrícula."
+      },  
   {
     "palavras_chave": [
       "trancamento",
@@ -20,7 +20,7 @@
       "trancamento semestral",
       "trancamento anual"
     ],
-    "resposta": "🔒 **Trancamento de Curso**\n\nO trancamento suspende temporariamente seu vínculo com a universidade.\n\n- **Prazo:** Até o **15º dia letivo** de cada semestre.\n- **Limite:** Máximo de **4 semestres** consecutivos ou alternados.\n- **Como solicitar:** Portal do Aluno → *Requerimentos* → *Trancamento de Matrícula*.\n- **Efeito financeiro:** Mensalidades continuam sendo cobradas proporcionalmente ao período cursado.\n\nPrecisa de ajuda? Vá até a **Secretaria Acadêmica** (sala B-12)."
+    "resposta": "🔒 **Trancamento de Curso**\n\nO trancamento suspende temporariamente seu vínculo com a universidade.\n\n- **Prazo:** Até o **15º dia letivo** de cada semestre.\n- **Limite:** Máximo de **4 semestres** consecutivos ou alternados.\n- **Como solicitar:** Portal do Aluno → *Requerimentos* → *Trancamento de Matrícula*.\n- **Efeito financeiro:** Mensalidades continuam sendo cobradas proporcionalmente ao período cursado.\n\nPrecisa de ajuda? Vá até a **Secretaria Acadêmica** (BLOCO A)."
   },
   {
     "palavras_chave": [
@@ -35,8 +35,8 @@
       "datas importantes",
       "provas",
       "avaliações"
-    ],
-    "resposta": "📅 **Calendário Acadêmico 2026**\n\n| Evento | Data |\n|--------|------|\n| Início do 1º semestre | 03/02/2026 |\n| Recesso de Carnaval | 03/03 a 05/03/2026 |\n| Provas Parciais (P1) | 07/04 a 11/04/2026 |\n| Provas Finais (PF) | 23/06 a 27/06/2026 |\n| Início do 2º semestre | 04/08/2026 |\n| Provas Parciais (P2) | 06/10 a 10/10/2026 |\n| Provas Finais (PF) | 24/11 a 28/11/2026 |\n\n> 📌 Calendário completo disponível no Portal do Aluno → *Acadêmico* → *Calendário*."
+    ],    
+    "resposta": "📅 **Calendário Acadêmico 2026**\n\n| Evento | Data |\n|--------|------|\n| Início do 1º semestre | 02/02/2026 |\n| Recesso de Carnaval | 14/02/2026 a 17/02/2026 |\n| Data Limite para inserir o plano de ensino | 20/02/2026 |\n| Quinta-feira Santa | 02/04/2026 |\n| Paixão de Cristo | 03/04/2026 |\n| Período da Avaliação P1 + ADI | 09/04/2026 a 17/04/2026 |\n| Dia Não Letivo + Feriado Tiradentes | 20/04/2026 a 21/04/2026 |\n| Data Limite para Lançamento de Notas P1 | 24/04/2026 |\n| Dia do Trabalhador + Dia Não Letivo | 01/05/2026 a 02/05/2026 |\n| Corpus Christi + Dia Não Letivo | 04/06/2026 a 05/06/2026 |\n| Avaliação P2 | 08/06/2026 a 12/06/2026 |\n| Início da Solicitação de Pagamento da Prova Sub | 08/06/2026 |\n| Avaliação P2 DP | 15/06/2026 |\n| Conigran e Apresentação de TCC no Congresso | 16/06/2026 |\n| Data Limite para Solicitação de Isenção da Prova Sub | 16/06/2026 |\n| Jogo do Brasil x Haiti (Dia Não Letivo) | 19/06/2026 |\n| Jogo do Brasil x Escócia (Dia Não Letivo) | 24/06/2026 |\n| Período de Provas Substitutivas | 25/06/2026 a 01/07/2026 |\n| Início das Matrículas para o 2º Semestre | 01/07/2026 |\n| Prazo Final para Entrega de Notas do Exame | 09/07/2026 |\n| Revisão do Exame | 10/07/2026 |\n| Boas-Vindas SuperTime | 30/07/2026 |\n| Início das Aulas do 2º Semestre | 03/08/2026 |\n| Data Limite para Inserir o Plano de Ensino no Sistema | 14/08/2026 |\n| Data Limite para Matrícula de DP | 19/08/2026 |\n| Aniversário de Campo Grande | 26/08/2026 |\n| Período de Avaliação P1 | 10/09/2026 a 17/09/2026 |\n| Semana do Saco Cheio | 11/10/2026 a 16/10/2026 |\n| Divisão do Estado | 11/10/2026 |\n| Dia das Crianças / Nossa Senhora Aparecida | 12/10/2026 |\n| Dia dos Professores + Dia Não Letivo | 15/10/2026 a 16/10/2026 |\n| Feira das Profissões | 29/10/2026 a 30/10/2026 |\n| Dia dos Finados | 02/11/2026 |\n| Proclamação da República | 15/11/2026 |\n| Período de Avaliação P2 | 18/11/2026 a 27/11/2026 |\n| Início para Solicitação da Prova Sub | 18/11/2026 |\n| Data Limite para Isenção da Prova Substitutiva | 27/11/2026 |\n| Início das Matrículas do 1º Semestre 2027 | 30/11/2026 |\n| Data Limite da Solicitação de Pagamento da Prova Sub | 30/11/2026 |\n| Abertura do Juca | 30/11/2026 |\n| Período de Provas Substitutivas | 01/12/2026 a 07/12/2026 |\n| Período de Exames | 09/12/2026 a 15/12/2026 |\n| Data Limite para Notas do Exame | 16/12/2026 |\n| Início das Férias | 28/12/2026 |\n\n> 📌 Calendário completo disponível no Portal do Aluno → *Acadêmico* → *Calendário*."
   },
   {
     "palavras_chave": [
@@ -48,7 +48,7 @@
       "acervo",
       "devolver livro"
     ],
-    "resposta": "📚 **Biblioteca Universitária**\n\n- **Localização:** Bloco C, térreo.\n- **Horário:** Segunda a sexta: 7h–22h | Sábado: 8h–14h.\n- **Empréstimo:** Até **3 livros** por 7 dias (alunos de graduação).\n- **Renovação:** Online pelo Portal do Aluno ou presencialmente.\n- **Acervo digital:** Acesse a **Pearson / Minha Biblioteca** pelo portal — disponível 24h.\n- **Reserva:** Livros indisponíveis podem ser reservados pelo portal; você será notificado por e-mail.\n\n📞 Contato: biblioteca@universidade.edu.br"
+    "resposta": "📚 **Biblioteca Universitária**\n\n- **Localização:** Bloco A, térreo.\n- **Horário:** Segunda a sexta: 7h–22h | Sábado: 7:30h–11:30h.\n- **Empréstimo:** Até **3 livros** por 7 dias (alunos de graduação).\n- **Renovação:** A renovação pode ser feita UMA vez pelo SITE,depois somente presencialmente.\n- **Acervo digital:** Acesse a ** Minha Biblioteca** pelo portal e selecione **CAMPO GRANDE MS** — disponível 24h.\n- **Reserva:** Livros indisponíveis podem ser reservados pelo portal; você será notificado por e-mail.\n\n📞 Contato: biblioteca.capital02@unigran.br / 67 93389-3378 "
   },
   {
     "palavras_chave": [
@@ -60,7 +60,7 @@
       "defesa de tcc",
       "projeto final"
     ],
-    "resposta": "📄 **TCC — Trabalho de Conclusão de Curso**\n\n**Etapas principais:**\n1. **Pré-TCC (7º período):** Definição de tema e orientador. Entrega de pré-projeto.\n2. **TCC I (8º período):** Desenvolvimento do projeto com reuniões mensais com orientador.\n3. **TCC II (9º período):** Finalização, revisão e entrega do documento completo.\n4. **Defesa:** Apresentação para banca examinadora (3 professores).\n\n**Documentos e prazos:** Acompanhe pelo Portal do Aluno → *TCC*.\n\n**Coordenação de TCC:** Prof. [Nome], sala D-08. E-mail: tcc@universidade.edu.br"
+  "resposta": "📘 **TCC – Trabalho de Conclusão de Curso**\n\n**Etapas principais:**\n\n1. **Pré-TCC (6º período):** Definição de tema,orientador e entrega de pré-projeto.\n2. **TCC I (7º período):** Desenvolvimento do projeto com reuniões mensais com orientador.\n3. **TCC II (8º período):** Finalização, revisão e entrega do documento completo.\n4. **Defesa:** Apresentação para a banca examinadora (3 professores).\n\n**Documentos e prazos:** Acompanhe pelo Portal do Aluno → *TCC*.\n\n**Coordenador do TCC:** Prof. Emerson."
   },
   {
     "palavras_chave": [
@@ -74,9 +74,11 @@
       "mensalidade",
       "isenção"
     ],
-    "resposta": "💰 **Bolsas e Auxílios Disponíveis**\n\n**Programas externos (governo):**\n- **ProUni:** Bolsas parciais (50%) ou integrais (100%). Inscrição pelo MEC no SISU.\n- **FIES:** Financiamento estudantil. Juros: 3,4% a.a. Inscrição: fies.mec.gov.br.\n\n**Programas internos:**\n- **Bolsa Mérito:** Para alunos com CR ≥ 8,5 e sem reprovações.\n- **Bolsa Colaborador:** Desconto de 20% para funcionários e dependentes.\n- **Programa de Auxílio Socioeconômico:** Análise de renda familiar. Formulário na Secretaria.\n\n📋 Para solicitar: Portal do Aluno → *Financeiro* → *Bolsas e Descontos*."
+    "resposta": "💰 **Bolsas e Auxílios Disponíveis**\n\n**Programas externos (governo):**\n- **ProUni:** Bolsas parciais (50%). Inscrição pelo MEC no SISU.\n- **FIES:** Financiamento estudantil. Juros: 3,4% a.a. Inscrição: fies.mec.gov.br.\n\n**Programas internos:**\n- **Bolsa Mérito:** Para alunos com CR ≥ 8,5 e sem reprovações.\n- **Bolsa Colaborador:** Desconto de 20% para funcionários e dependentes.\n- **Programa de Auxílio Socioeconômico:** Análise de renda familiar. Formulário na Secretaria.\n\n📋 Para solicitar: Portal do Aluno → *Financeiro* → *Bolsas e Descontos*."
   },
   {
+
+
     "palavras_chave": [
       "estágio",
       "estagio",
@@ -86,7 +88,7 @@
       "convênio empresa",
       "horas de estágio"
     ],
-    "resposta": "💼 **Estágios**\n\n**Estágio Obrigatório:**\n- Carga horária mínima: **300h** (varia por curso).\n- Deve ser realizado a partir do **5º período**.\n- Precisa de: Termo de Compromisso + Apólice de Seguro + Plano de Atividades.\n\n**Estágio Não-Obrigatório:**\n- Pode ser realizado a partir do **2º período**.\n- A empresa deve ter convênio com a universidade (ou usar agente de integração).\n\n**Central de Estágios:**\n- 📍 Bloco A, sala 105\n- 📧 estagios@universidade.edu.br\n- 🕐 Seg–Sex: 9h–17h\n\n> Vagas de estágio disponíveis no portal: *Carreira* → *Oportunidades*."
+    "resposta": "💼 **Estágios**\n\n**Estágio Obrigatório:**\n- Carga horária mínima: **300h** (varia por curso).\n- Deve ser realizado a partir do **5º período**.\n- Precisa dos Seguintes Documentos: Termo de Compromisso + Termo Aditivo + Termo de Rescisão + Relatório de Estágio.\n\n**Estágio Não-Obrigatório:**\n- Procurar pelo setor NEXITEMPER.\n\n**Central de Estágios:**\n- 📍 Bloco A,NAD(Núcleo de Apoio do Discente)\n- 📧 nexitemper.capital@unigran.br/estagio.nexitemper.capital@unigran.br \n- 🕐 Seg–Sex: 8h–21:30h\n\n> Vagas de estágio disponíveis no portal: Verificar no NAD(Núcleo de Apoio do Discente), se encontra no Bloco A subterrâneo."
   },
   {
     "palavras_chave": [
@@ -99,7 +101,7 @@
       "documento",
       "certidão"
     ],
-    "resposta": "📃 **Documentos e Declarações**\n\nTodos os documentos abaixo são solicitados pelo **Portal do Aluno → Secretaria → Requerimentos:**\n\n| Documento | Prazo de emissão | Taxa |\n|-----------|-----------------|------|\n| Declaração de Matrícula | Imediato (online) | Gratuita |\n| Histórico Escolar | 3 dias úteis | Gratuito |\n| Atestado de Frequência | 3 dias úteis | Gratuito |\n| Colação de Grau / Diploma | Após formatura | Gratuito |\n| Cópia de Prova | 5 dias úteis | R$ 5,00/folha |\n\nPara retirada presencial: Secretaria Acadêmica, sala B-12."
+    "resposta": "📃 **Documentos e Declarações**\n\nTodos os documentos abaixo são solicitados pelo **Portal do Aluno → Secretaria → Requerimentos:**\n\n| Documento | Prazo de emissão | Taxa |\n|-----------|-----------------|------|\n| Declaração de Matrícula | Imediato (online) | Gratuita |\n| Histórico Escolar | 3 dias úteis | Gratuito |\n| Atestado de Frequência | 3 dias úteis | Gratuito |\n| Colação de Grau / Diploma | Após formatura | Gratuito |\n| |\n\nPara retirada presencial: Secretaria Acadêmica."
   },
   {
     "palavras_chave": [
@@ -111,7 +113,7 @@
       "sala de aula",
       "turno"
     ],
-    "resposta": "🕐 **Horários e Grade de Aulas**\n\nConsulte sua grade de aulas pelo **Portal do Aluno → Acadêmico → Horário de Aulas**.\n\n**Turnos disponíveis:**\n- 🌅 **Matutino:** 7h10 – 12h30\n- 🌇 **Vespertino:** 13h – 18h20\n- 🌙 **Noturno:** 18h30 – 22h30\n\nMudanças de turma ou turno devem ser solicitadas na Secretaria Acadêmica durante o período de matrícula."
+    "resposta": "🕐 **Horários e Grade de Aulas**\n\nConsulte sua grade de aulas pelo **Portal do Aluno → Acadêmico → Horário de Aulas**.\n\n**Turnos disponíveis:**\n- 🌅 **Matutino:** 8h – 10h20\n- 🌙 **Noturno:** 19h – 21:20 |\n\nMudanças de turma ou turno devem ser solicitadas na Secretaria Acadêmica durante o período de matrícula."
   },
   {
     "palavras_chave": [
@@ -125,6 +127,6 @@
       "ouvidoria",
       "atendimento"
     ],
-    "resposta": "📞 **Contatos Úteis da Universidade**\n\n| Setor | Contato | Horário |\n|-------|---------|--------|\n| Secretaria Acadêmica | secretaria@univ.edu.br | Seg–Sex 8h–18h |\n| Financeiro | financeiro@univ.edu.br | Seg–Sex 9h–17h |\n| Biblioteca | biblioteca@univ.edu.br | Seg–Sáb 7h–22h |\n| Central de Estágios | estagios@univ.edu.br | Seg–Sex 9h–17h |\n| TI / Portal do Aluno | suporte.ti@univ.edu.br | Seg–Sex 8h–20h |\n| Ouvidoria | ouvidoria@univ.edu.br | 24h (online) |\n\n📍 **Endereço:** R. Abrão Júlio Rahe, 325 - Centro, Campo Grande - MS, 79010-010."
+    "resposta": "📞 **Contatos Úteis da Universidade**\n\n| Setor | Contato | Horário |\n|-------|---------|--------|\n| Secretaria Acadêmica | academicacapital@unigran.br | Seg–Sex 8h–18h |\n|\n| Biblioteca | biblioteca.capital02@unigran.br | Seg–Sáb 7h–22h |\n| Central de Estágios |www.nexitemper.com.br| Seg–Sex 8h–21:30h |\n| TI / Portal do Aluno | https://area.campogrande.unigran.br|\n\n📍 **Endereço:** R. Abrão Júlio Rahe, 325 - Centro, Campo Grande - MS, 79010-010."
   }
 ]
