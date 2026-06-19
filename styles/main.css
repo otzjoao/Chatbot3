@@ -88,6 +88,25 @@ html, body, [class*="css"] {
   transition: background var(--transition-slow);
 }
 
+.stAppHeader{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  display: flex;
+  -moz-box-align: center;
+  align-items: center;
+  height: 3.75rem;
+  min-height: 3.75rem;
+  width: 100%;
+  background: none !important;
+  outline: none;
+  z-index: 999990;
+  pointer-events: auto;
+  font-size: 0.875rem;
+}
+
+
 /* ═══════════════════════════════════════════════
    SIDEBAR
 ═══════════════════════════════════════════════ */
@@ -117,6 +136,21 @@ html, body, [class*="css"] {
 
 /* Slider label */
 [data-testid="stSidebar"] label { color: var(--text-secondary) !important; }
+
+div:has(>[data-testid="stBottomBlockContainer"]) {
+    background-color: none !important;
+    background: none !important;
+}
+
+div:has(>[data-testid="stChatInputTextArea"]) {
+    background-color: none !important;
+    background: none !important;
+} 
+
+.st-b1{
+  background-color: none !important;
+  background: none !important;
+}
 
 /* ═══════════════════════════════════════════════
    MAIN HEADER
@@ -169,6 +203,7 @@ html, body, [class*="css"] {
    MENSAGENS
 ═══════════════════════════════════════════════ */
 .chat-wrapper {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -468,6 +503,11 @@ div[data-testid="stVerticalBlock"] > div > .stButton button:hover {
   background: rgba(79,142,247,0.08) !important;
   box-shadow: 0 0 20px var(--accent-glow) !important;
 }
+
+.stMainBlockElement{
+  width: 85% !important;
+}
+
 
 /* ═══════════════════════════════════════════════
    RESPONSIVE MOBILE

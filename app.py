@@ -17,7 +17,7 @@ def load_template(name: str) -> str:
 def render_template(name: str, **kwargs) -> str:
     markup = load_template(name)
     for key, value in kwargs.items():
-        markup = markup.replace(f"{{{{ {key} }}}}", str(value))
+        markup = markup.replace(f"{{{{ {key} }}}}", str(value)) 
     return markup
 
 def load_css() -> str:
@@ -83,7 +83,7 @@ def chat_with_llama(messages: list, token: str, temperature: float, max_tokens: 
 st.set_page_config(
     page_title="UniBot · FAQ Acadêmico",
     page_icon="🎓",
-    layout="centered",
+    layout="wide",
     initial_sidebar_state="expanded",
 )
 
@@ -94,6 +94,47 @@ if "theme" not in st.session_state:
 
 theme_attr = "light" if st.session_state.theme == "light" else ""
 theme_icon = "☀️" if st.session_state.theme == "dark" else "🌙"
+
+if st.session_state.theme == "light":
+    st.markdown("""
+    <style>
+        /* Altera o app completo e os inputs nativos /
+        .stApp, [data-testid="stChatMessageContainer"], [data-testid="stChatInput"] {
+            background-color: #f4f5fb !important;
+            color: #0d1020 !important;
+        }
+        / Altera especificamente a caixa de texto do input do chat /
+        [data-testid="stChatInput"] textarea {
+            background-color: #ffffff !important;
+            color: #0d1020 !important;
+            border: 1px solid rgba(0,0,0,0.1) !important;
+        }
+        / Variáveis customizadas para os seus templates HTML (header, balões) /
+        .stApp {
+            --bg-base: #f4f5fb !important;
+            --bg-surface: #ffffff !important;
+            --bg-glass: rgba(255,255,255,0.7) !important;
+            --text-primary: #0d1020 !important;
+            --text-secondary: #5a6080 !important;
+            --text-muted: #aab0c4 !important;
+            --bot-bg: #ffffff !important;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+else:
+    # Garante que se voltar para o Dark, o input e o fundo voltem ao padrão escuro correto
+    st.markdown("""
+    <style>
+        .stApp, [data-testid="stChatMessageContainer"], [data-testid="stChatInput"] {
+            background-color: #0e1117 !important; / Cor padrão dark do streamlit */
+            color: #fafafa !important;
+        }
+        [data-testid="stChatInput"] textarea {
+            background-color: #262730 !important;
+            color: #fafafa !important;
+        }
+    </style>
+    """, unsafe_allow_html=True)
 
 # Inject CSS + tema no <html>
 css = load_css()
@@ -127,7 +168,6 @@ if st.session_state.theme == "light":
         --sidebar-border: rgba(0,0,0,0.06) !important;
         --shadow-card: 0 4px 24px rgba(0,0,0,0.08) !important;
         --shadow-msg: 0 2px 12px rgba(0,0,0,0.06) !important;
-        background: #f4f5fb !important;
       }
     </style>
     """, unsafe_allow_html=True)
@@ -157,10 +197,7 @@ with st.sidebar:
             help="Obtenha grátis em huggingface.co/settings/tokens",
         )
 
-    st.markdown("---")
-    st.markdown("### ⚙️ Configurações")
-    temperature = st.slider("Criatividade", 0.1, 1.0, 0.4, 0.05,
-                            help="Valores baixos = respostas mais diretas")
+    temperature = 0.1
     max_tokens = 512
 
     st.markdown("---")
@@ -268,7 +305,7 @@ if st.session_state.resposta_cortada:
                 st.markdown(render_template("message_bot.html", content=md_para_html(continuacao)), unsafe_allow_html=True)
             st.session_state.messages.append({"role": "assistant", "content": continuacao})
             st.session_state.resposta_cortada = foi_cortado
-            st.rerun()
+            # st.rerun()
 
 
 # ── Input do usuário ─────────────────────────────────────────────────────────
