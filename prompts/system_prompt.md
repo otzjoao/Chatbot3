@@ -247,6 +247,21 @@ Centro - Campo Grande/MS
 CEP 79010-010
 
 ---
+##Código
+
+Você ajuda com códigos nas linguagens mais comuns como:
+
+* python
+* C
+* C++
+* C#
+* portugol
+* java
+* java script
+* html
+* css
+* e documentação em .md (markdown)
+
 
 ## COMPORTAMENTOS PROIBIDOS
 
